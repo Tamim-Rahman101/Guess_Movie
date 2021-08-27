@@ -17,7 +17,6 @@ public class Main {
             movieName[movieListCount] = movieScan.nextLine();
         }
         int movieIndex =(int)(Math.random()*movieListCount+1);  //generate random number to pick random movie
-        System.out.println(movieListCount+"    "+movieIndex+"   "+movieName[movieIndex]);
 
         int movieLength = movieName[movieIndex].length();   //length of the random movie
 
@@ -46,11 +45,11 @@ public class Main {
             System.out.print("Guess a letter : ");
             ok = false;
             input = inputScan.next().charAt(0);
-            //System.out.println(input);
             for(i=0;i<movieLength; i++) {
                 if (movieName[movieIndex].charAt(i) == input) {
                     ok = true;
-                    point++;
+                    if(myMovie.charAt(i) == '_')
+                        point++;
                     myMovie = myMovie.substring(0,i)+input+myMovie.substring(i+1,movieLength);
                 }
             }
@@ -59,7 +58,6 @@ public class Main {
                 chance++;
                 wrongLetters += (" " + input);
             }
-            //System.out.println("                            "+myMovie+"   c "+chance+"   p "+point+"  l "+movieLength);
         }
         if(chance < 10)
             System.out.println("You Win!\nYou have guessed '"+myMovie+"' correctly.");
